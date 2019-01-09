@@ -11,11 +11,11 @@ import java.lang.annotation.Target;
  * Indicates that the associated class implementing Job {@link org.quartz.Job}
  * shall be scheduled automatically according to the properties provided.
  *
- * The scheduling is automatically done at {@link SchedulerConfig#scheduler()}
+ * The scheduling is automatically done at {@link SchedulerConfig#scheduler(String)} ()}
  * To use the auto scheduling, annotate your Job implementation with this annotation
  * with required properties.
  * <pre>
- *     @QJob(interval="5", intervalType=JobConfig.IntervalType.SEC)
+ *     @Scheduled(interval="5", intervalType=JobConfig.IntervalType.SEC)
  *     class TestJob implements Job {
  *         //...
  *     }
@@ -23,7 +23,7 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface QJob {
+public @interface Scheduled {
 
     String interval() default "";
 

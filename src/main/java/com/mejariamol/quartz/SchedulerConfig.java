@@ -1,6 +1,6 @@
 package com.mejariamol.quartz;
 
-import com.mejariamol.quartz.annotation.QJob;
+import com.mejariamol.quartz.annotation.Scheduled;
 import com.mejariamol.quartz.exceptions.QePropertyMissingException;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
@@ -20,9 +20,9 @@ public class SchedulerConfig {
     private static final Logger logger = LoggerFactory.getLogger(SchedulerConfig.class);
 
     /**
-     * All the jobs annotated with {@link com.mejariamol.quartz.annotation.QJob}
+     * All the jobs annotated with {@link Scheduled}
      * are searched and scheduled on this scheduler with required trigger as per the
-     * specified intervals in QJob annotation declaration.
+     * specified intervals in Scheduled annotation declaration.
      */
     @Bean
     public Scheduler scheduler(@Value("${qe.base-package}") String basePackage) throws SchedulerException, QePropertyMissingException {
@@ -37,7 +37,7 @@ public class SchedulerConfig {
         // schedule all the jobs with suitable triggers here
         ClassPathScanningCandidateComponentProvider provider =
                 new ClassPathScanningCandidateComponentProvider(false);
-        provider.addIncludeFilter(new AnnotationTypeFilter(QJob.class));
+        provider.addIncludeFilter(new AnnotationTypeFilter(Scheduled.class));
 
         JobDetail jobDetail;
         Trigger trigger;
@@ -45,7 +45,7 @@ public class SchedulerConfig {
             try {
                 Class cl = Class.forName(bdf.getBeanClassName());
                 jobDetail = JobBuilder.newJob(cl).storeDurably().build();
-                QJob config = (QJob) cl.getAnnotation(QJob.class);
+                Scheduled config = (Scheduled) cl.getAnnotation(Scheduled.class);
 
                 // TODO: Check the interval type and create scheduleBuilder accordingly
                 SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule()
