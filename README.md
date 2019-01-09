@@ -13,7 +13,8 @@ class TestJob implements Job {
     //...
 }
 ```
-2. And you are done! **No need** to define factories, JobDetail, Triggers...etc.
+2. set application property `qe.base-package` as your base package name of the project which will contain all your job implementations.
+3. And you are done! **No need** to define factories, JobDetail, Triggers...etc.
 
 ## Contribute
 Lets make this more simpler and effective! Looking forward to PRs. :smile::+1:
