@@ -1,4 +1,4 @@
-package com.mejariamol.quartz.exceptions;
+package com.indusnode.quartz.exceptions;
 
 public class QePropertyMissingException extends Exception {
 

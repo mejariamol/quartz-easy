@@ -1,6 +1,6 @@
-package com.mejariamol.quartz.annotation;
+package com.indusnode.quartz.annotation;
 
-import com.mejariamol.quartz.SchedulerConfig;
+import com.indusnode.quartz.SchedulerConfig;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

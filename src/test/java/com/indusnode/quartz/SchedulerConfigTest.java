@@ -1,4 +1,4 @@
-package com.mejariamol.quartz;
+package com.indusnode.quartz;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

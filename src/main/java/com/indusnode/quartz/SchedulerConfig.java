@@ -1,7 +1,7 @@
-package com.mejariamol.quartz;
+package com.indusnode.quartz;
 
-import com.mejariamol.quartz.annotation.Scheduled;
-import com.mejariamol.quartz.exceptions.QePropertyMissingException;
+import com.indusnode.quartz.annotation.Scheduled;
+import com.indusnode.quartz.exceptions.QePropertyMissingException;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 import org.slf4j.Logger;

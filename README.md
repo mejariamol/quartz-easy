@@ -6,7 +6,7 @@ The purpose of this project is to simplify the quartz scheduler integration in s
 ## How to use
 1. Annotate your Job implementation with `Scheduled` annotatation with required configuration by setting suitable fields present in the annotation.
 ```
-import com.mejariamol.quartz.annotation.Scheduled;
+import com.indusnode.quartz.annotation.Scheduled;
 ...
 @Scheduled(interval="5", intervalType=JobConfig.IntervalType.SEC)
 class TestJob implements Job {
