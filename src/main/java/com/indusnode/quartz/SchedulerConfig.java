@@ -23,6 +23,11 @@ public class SchedulerConfig {
      * All the jobs annotated with {@link Scheduled}
      * are searched and scheduled on this scheduler with required trigger as per the
      * specified intervals in Scheduled annotation declaration.
+     *
+     * @param basePackage indicates package name which includes all the job implementations.
+     * @return Scheduler bean which can be used to control the scheduled jobs
+     * @throws SchedulerException
+     * @throws QePropertyMissingException when qe.base-package is not set in application.properties
      */
     @Bean
     public Scheduler scheduler(@Value("${qe.base-package}") String basePackage) throws SchedulerException, QePropertyMissingException {

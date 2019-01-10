@@ -14,12 +14,6 @@ import java.lang.annotation.Target;
  * The scheduling is automatically done at {@link SchedulerConfig#scheduler(String)} ()}
  * To use the auto scheduling, annotate your Job implementation with this annotation
  * with required properties.
- * <pre>
- *     @Scheduled(interval="5", intervalType=JobConfig.IntervalType.SEC)
- *     class TestJob implements Job {
- *         //...
- *     }
- * </pre>
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
