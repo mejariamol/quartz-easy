@@ -18,6 +18,8 @@ class TestJob implements Job {
 2. set application property `qe.base-package` as your base package name of the project which will contain all your job implementations.
 3. And you are done! **No need** to define factories, JobDetail, Triggers...etc.
 
+NOTE: This library currently doesn't provide database support for quarts data. You may setup those settings in traditional way besides this library.
+
 ## Installation
 #### Maven
 In a Maven project, include the `quartz-easy` artifact in the dependencies section of your `pom.xml`
