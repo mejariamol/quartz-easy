@@ -19,14 +19,12 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Scheduled {
 
-    String interval() default "";
+    String interval() default "5";
 
-    // TODO: Keep CRON as default
     IntervalType intervalType() default IntervalType.SEC;
 
     enum IntervalType {
         CRON,
-        SEC,
-        HR
+        SEC
     }
 }

@@ -52,11 +52,15 @@ public class SchedulerConfig {
                 jobDetail = JobBuilder.newJob(cl).storeDurably().build();
                 Scheduled config = (Scheduled) cl.getAnnotation(Scheduled.class);
 
-                // TODO: Check the interval type and create scheduleBuilder accordingly
-                SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule()
-                        .withIntervalInSeconds(Integer.parseInt(config.interval()))
-                        .repeatForever();
-                trigger = TriggerBuilder.newTrigger().withSchedule(scheduleBuilder).build();
+                if (config.intervalType() == Scheduled.IntervalType.CRON) {
+                    trigger = TriggerBuilder.newTrigger().startNow()
+                            .withSchedule(CronScheduleBuilder.cronSchedule(config.interval())).build();
+                } else {
+                    SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule()
+                            .withIntervalInSeconds(Integer.parseInt(config.interval()))
+                            .repeatForever();
+                    trigger = TriggerBuilder.newTrigger().withSchedule(scheduleBuilder).startNow().build();
+                }
                 scheduler.scheduleJob(jobDetail, trigger);
             } catch (ClassNotFoundException ignored) {}
         }
